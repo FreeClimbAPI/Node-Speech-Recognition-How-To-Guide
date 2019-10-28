@@ -3,9 +3,9 @@
 
 
 "@freeclimb/sdk@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@freeclimb/sdk/-/sdk-1.0.0.tgz#560cdf263f7a4db85dd1c03b4f4ea9c97960470b"
-  integrity sha512-bQ1LcpRmKUBRPmtphZqq2019a+GyHN9tQwMb61LQa9TFJKX7cT6/RFlFpxxzRM/VRyUEz6SQoY1Q/eeJS6exRw==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@freeclimb/sdk/-/sdk-1.0.1.tgz#06750637f2a9f241ac356162c0712c38eaa27465"
+  integrity sha512-WTLka/Oi74uUZRKJCfXUKpQs70Qmyxsv+8el6XLmAGG0iKnbp7Mmg++9LMv5p2KHL6tbyr8XVnzelItgXAWcZg==
   dependencies:
     lodash.assign "^4.2.0"
     node-fetch "^2.6.0"
