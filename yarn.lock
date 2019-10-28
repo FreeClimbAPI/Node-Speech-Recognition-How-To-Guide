@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@persephony/sdk@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@persephony/sdk/-/sdk-1.1.1.tgz#b6283e2185e6d2f5031dab5b14c798e84196ac9f"
-  integrity sha512-g90pbrF/s79G4S1buWhKm0o7suyuRE7citgtFYHvfLSvj7z6YqSlKnvFN4pp9dpid7cfkv6oSwyG7n96NsvYTg==
+"@freeclimb/sdk@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@freeclimb/sdk/-/sdk-1.0.0.tgz#560cdf263f7a4db85dd1c03b4f4ea9c97960470b"
+  integrity sha512-bQ1LcpRmKUBRPmtphZqq2019a+GyHN9tQwMb61LQa9TFJKX7cT6/RFlFpxxzRM/VRyUEz6SQoY1Q/eeJS6exRw==
   dependencies:
     lodash.assign "^4.2.0"
     node-fetch "^2.6.0"
@@ -84,9 +84,9 @@ destroy@~1.0.4:
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
 dotenv@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.1.0.tgz#d811e178652bfb8a1e593c6dd704ec7e90d85ea2"
-  integrity sha512-GUE3gqcDCaMltj2++g6bRQ5rBJWtkWTmqmD0fo1RnnMuUqHNCt2oTPeDnS9n6fKYvlhn7AeBkb38lymBtWBQdA==
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 ee-first@1.1.1:
   version "1.1.1"
