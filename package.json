@@ -1,5 +1,5 @@
 {
-  "name": "node-stream-a-recording-tutorial",
+  "name": "node-speech-recognition-tutorial",
   "version": "1.0.0",
   "dependencies": {
     "@freeclimb/sdk": "^1.0.0",
