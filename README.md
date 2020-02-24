@@ -1,6 +1,6 @@
 # Node - Speech Recognition Tutorial
 
-This project serves as a guide to help you build an application with FreeClimb. View this tutorial on [FreeClimb.com](https://docs.freeclimb.com/docs/add-speech-recognition-1#section-javascript). Specifically, the project will:
+This project serves as a guide to help you build an application with FreeClimb. View this tutorial on [FreeClimb.com](https://docs.freeclimb.com/docs/add-speech-recognition-1#section-nodejs). Specifically, the project will:
 
 - Make an outgoing Call
 - Prompt the participant for a response
