@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<grammar xml:lang="en-US" tag-format="semantics-ms/1.0" version="1.0" root="PersyColor" mode="voice" xmlns="http://www.w3.org/2001/06/grammar">
-<rule id="PersyColor" scope="public">
+<grammar xml:lang="en-US" tag-format="semantics-ms/1.0" version="1.0" root="color" mode="voice" xmlns="http://www.w3.org/2001/06/grammar">
+<rule id="color" scope="public">
         <item>
                 <item repeat="0-1"><ruleref uri="#UMFILLER"/></item>
                 <item>
