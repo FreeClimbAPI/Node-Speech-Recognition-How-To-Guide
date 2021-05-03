@@ -8,9 +8,9 @@ const freeclimbSDK = require('@freeclimb/sdk')
 const port = process.env.PORT || 80
 const host = process.env.HOST
 const accountId = process.env.ACCOUNT_ID
-const authToken = process.env.AUTH_TOKEN
+const apiKey = process.env.API_KEY
 const applicationId = process.env.APPLICATION_ID
-const freeclimb = freeclimbSDK(accountId, authToken)
+const freeclimb = freeclimbSDK(accountId, apiKey)
 
 //Invoke create method to initiate the asynchronous outdial request
 freeclimb.api.calls.create(to, from, applicationId).catch(err => {/** Handle Errors */ })
