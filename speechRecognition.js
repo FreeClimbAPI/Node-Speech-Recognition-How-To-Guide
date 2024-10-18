@@ -4,43 +4,51 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
 const freeclimbSDK = require('@freeclimb/sdk')
+const { PerclScript, GetSpeech, GrammarType, Say, GetSpeechReason, Hangup } = require('@freeclimb/sdk')
 
 const port = process.env.PORT || 80
 const host = process.env.HOST
 const accountId = process.env.ACCOUNT_ID
 const apiKey = process.env.API_KEY
+const to = 'YOUR_TO_NUMBER'
+const from = 'YOUR_FROM_NUMBER'
 const applicationId = process.env.APPLICATION_ID
-const freeclimb = freeclimbSDK(accountId, apiKey)
+const configuration = freeclimbSDK.createConfiguration({ accountId, apiKey })
+const freeclimb = new freeclimbSDK.DefaultApi(configuration)
 
-//Invoke create method to initiate the asynchronous outdial request
-freeclimb.api.calls.create(to, from, applicationId).catch(err => {/** Handle Errors */ })
+freeclimb.makeACall({ to, from, applicationId, callConnectUrl: `${host}/incomingCall` }).catch(err => { console.log(err) })
 
-// Handles incoming calls. Set with 'Call Connect URL' in App Config
 app.post('/incomingCall', (req, res) => {
-  const say = freeclimb.percl.say("Please select a color. Select green, red, or yellow.")
-  const options = {
-    grammarType: freeclimb.enums.grammarType.URL,
-    prompts: [say]
-  }
-  const getSpeech = freeclimb.percl.getSpeech(`${host}/colorSelectDone`, `${host}/grammarFile`, options)
-  const percl = freeclimb.percl.build(getSpeech)
-  // Convert PerCL container to JSON and append to response
-  res.status(200).json(percl)
+  res.status(200).json(new PerclScript({
+    commands: [
+      new GetSpeech({
+        actionUrl: `${host}/colorSelectDone`,
+        grammarFile: `${host}/grammarFile`,
+        grammarType: GrammarType.URL,
+        prompts: [
+          new Say({ text: "Please select a color. Select green, red, or yellow." })
+        ]
+      })
+    ]
+  }).build())
 })
 
 app.post('/colorSelectDone', (req, res) => {
-  const getSpeechActionResponse = req.body
-  // Check if recognition was successful
-  if (getSpeechActionResponse.reason === freeclimb.enums.getSpeechReason.RECOGNITION) {
-    // Get the result
-    const color = getSpeechActionResponse.recognitionResult
-    say = freeclimb.percl.say(`Selected color was ${color}`)
+  if (req.body.reason === GetSpeechReason.RECOGNITION) {
+    res.status(200).json(new PerclScript({
+      commands: [
+        new Say({ text: `Selected color was ${req.body.recognitionResult}` }),
+        new Hangup({})
+      ]
+    }).build())
   } else {
-    say = freeclimb.percl.say('There was an error in selecting a color')
+    res.status(200).json(new PerclScript({
+      commands: [
+        new Say({ text: "There was an error in selecting a color" }),
+        new Hangup({})
+      ]
+    }).build())
   }
-  const hangup = freeclimb.percl.hangup()
-  const percl = freeclimb.percl.build(say, hangup)
-  res.status(200).json(percl)
 })
 
 app.get('/grammarFile', function (req, res) {
@@ -50,7 +58,6 @@ app.get('/grammarFile', function (req, res) {
 
 // Specify this route with 'Status Callback URL' in App Config
 app.post('/status', (req, res) => {
-  // handle status changes
   res.status(200)
 })
 
